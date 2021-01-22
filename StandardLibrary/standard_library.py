@@ -4,9 +4,10 @@
 <Math 520>
 <1/22/2020>
 """
-import calculator 
+import calculator as clc
 from itertools import combinations
 
+    
 # Problem 1
 def prob1(L):
     """Return the minimum, maximum, and average of the entries of L
@@ -56,12 +57,12 @@ def hypot(a, b):
     Returns:
         The length of the triangle's hypotenuse.
     """
-    return sqrt(add(multiply(a,a),multiply(b,b)))
+    return clc.sqrt(clc.add(clc.multiply(a,a),clc.multiply(b,b)))
 
   
 # Problem 4
 def power_set(A):
-  """Use itertools to compute the power set of A.
+    """Use itertools to compute the power set of A.
 
     Parameters:
         A (iterable): a str, list, set, tuple, or other iterable collection.
@@ -74,7 +75,8 @@ def power_set(A):
         myList += combinations(A,i)
     return myList
 
-
-# Problem 5: Implement shut the box.
-def shut_the_box(player, timelimit):
-    """Play a single game of shut the box."""
+if __name__ == "__main__":
+    print(prob1((3,5,12,0,2)))
+    prob2()
+    print(hypot(3,4))
+    print(power_set(("A","B","C","D")))
