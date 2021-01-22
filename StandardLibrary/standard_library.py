@@ -71,7 +71,7 @@ def power_set(A):
         (list(sets)): The power set of A as a list of sets.
     """
     myList = list()
-    for i in range(1,len(A)+1,1):
+    for i in range(0,len(A)+1,1):
         myList += combinations(A,i)
     return myList
 
