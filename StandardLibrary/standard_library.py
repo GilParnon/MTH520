@@ -58,7 +58,10 @@ def hypot(a, b):
     """
     return sqrt(add(multiply(a,a),multiply(b,b)))
 
-   """Use itertools to compute the power set of A.
+  
+# Problem 4
+def power_set(A):
+  """Use itertools to compute the power set of A.
 
     Parameters:
         A (iterable): a str, list, set, tuple, or other iterable collection.
@@ -66,9 +69,6 @@ def hypot(a, b):
     Returns:
         (list(sets)): The power set of A as a list of sets.
     """
-# Problem 4
-def power_set(A):
- 
     myList = list()
     for i in range(1,len(A)+1,1):
         myList += combinations(A,i)
