@@ -1,17 +1,18 @@
 # standard_library.py
 """Python Essentials: The Standard Library.
-<Name>
-<Class>
-<Date>
+<Gil Parnon>
+<Math 520>
+<1/22/2020>
 """
-
+import calculator 
+from itertools import combinations
 
 # Problem 1
 def prob1(L):
     """Return the minimum, maximum, and average of the entries of L
     (in that order).
     """
-    raise NotImplementedError("Problem 1 Incomplete")
+    return min(L), max(L), sum(L)/len(L)
 
 
 # Problem 2
@@ -19,7 +20,28 @@ def prob2():
     """Determine which Python objects are mutable and which are immutable.
     Test numbers, strings, lists, tuples, and sets. Print your results.
     """
-    raise NotImplementedError("Problem 2 Incomplete")
+    int_1 = 5
+    temp = int_1
+    temp += 1
+    print("Are ints mutable?",temp == int_1)
+    str_1 = "Hello"
+    temp = str_1
+    temp += " world"
+    print("Are strings mutable?",temp == str_1)
+    list_1 = [1,2,3]
+    temp = list_1
+    temp[0] = 5
+    print("Are lists mutable?",temp == list_1)
+    tuple_1 = ("apple","banana","cherry")
+    temp = tuple_1
+    temp += (1,)
+    print("Are tuples mutable?",temp == tuple_1)
+    set_1 = {"apple", "banana", "cherry"}
+    temp = set_1
+    temp.add("some other fruit")
+    print("Are sets mutable?",temp == set_1)
+    return
+    
 
 
 # Problem 3
@@ -34,12 +56,9 @@ def hypot(a, b):
     Returns:
         The length of the triangle's hypotenuse.
     """
-    raise NotImplementedError("Problem 3 Incomplete")
+    return sqrt(add(multiply(a,a),multiply(b,b)))
 
-
-# Problem 4
-def power_set(A):
-    """Use itertools to compute the power set of A.
+   """Use itertools to compute the power set of A.
 
     Parameters:
         A (iterable): a str, list, set, tuple, or other iterable collection.
@@ -47,7 +66,13 @@ def power_set(A):
     Returns:
         (list(sets)): The power set of A as a list of sets.
     """
-    raise NotImplementedError("Problem 4 Incomplete")
+# Problem 4
+def power_set(A):
+ 
+    myList = list()
+    for i in range(1,len(A)+1,1):
+        myList += combinations(A,i)
+    return myList
 
 
 # Problem 5: Implement shut the box.
