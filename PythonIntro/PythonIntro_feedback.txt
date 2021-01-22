@@ -1,0 +1,34 @@
+01/22/21 15:19
+
+Problem 2 (5 points):
+Score += 5
+
+Problem 3 (5 points):
+Score += 5
+
+Problem 4 (10 points):
+Score += 10
+
+Problem 5 (5 points):
+Score += 5
+
+Problem 6 (5 points):
+Score += 5
+
+Problem 7 (10 points):
+TypeError: palindrome() missing 1 required positional argument: 'digits'
+
+Problem 8 (5 points):
+Score += 5
+
+Code Quality (5 points):
+Score += 5
+
+Total score: 40/50 = 80.0%
+
+
+Comments:
+	resubmit
+
+-------------------------------------------------------------------------------
+
