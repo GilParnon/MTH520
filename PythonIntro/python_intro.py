@@ -42,9 +42,10 @@ def pig_latin(param):
     else:
         param = param[1].upper()+param[2:len(param)]+param[0].lower()+'ay'
     return param
-def palindrome(digits):
+def palindrome():
     """Finds the largest palindrome that is the product of 2 numbers of the specified digits
     returns the number and its factors"""
+    digits = 3
     num = 0
     for i in range(10**(digits),10**(digits-1),-1):
         for j in range(i,10**(digits-1),-1):
