@@ -4,35 +4,40 @@
 <Class>
 <Date>
 """
+import numpy as np
 
 
 def prob1():
     """Define the matrices A and B as arrays. Return the matrix product AB."""
-    raise NotImplementedError("Problem 1 Incomplete")
-
+    A = np.array([[3, -1,4],[1,5,-9]])
+    B = np.array([[2, 6,-5,3],[5, -8,9,7],[9,-3,-2,-3]])
+    return np.dot(A,B)
 
 def prob2():
     """Define the matrix A as an array. Return the matrix -A^3 + 9A^2 - 15A."""
-    raise NotImplementedError("Problem 2 Incomplete")
+    A = np.array([[3,1,4],[1,5,9],[-5,3,1]])
+    return -np.dot(A,np.dot(A,A))+9*np.dot(A,A)-15*A
 
 
 def prob3():
     """Define the matrices A and B as arrays. Calculate the matrix product ABA,
     change its data type to np.int64, and return it.
     """
-    raise NotImplementedError("Problem 3 Incomplete")
+    A = np.triu(np.ones((7,7), dtype=np.int))
+    B = 5*np.ones((7,7), dtype=np.int) - 6*np.tril(np.ones((7,7)))
+    C = np.dot(A,np.dot(B,A))
+    C = C.astype(np.int64)
+    return C
 
 
 def prob4(A):
     """Make a copy of 'A' and set all negative entries of the copy to 0.
     Return the copy.
-
     Example:
-        >>> A = np.array([-3,-1,3])
-        >>> prob4(A)
-        array([0, 0, 3])
     """
-    raise NotImplementedError("Problem 4 Incomplete")
+    B = A.copy()
+    B[B<0] = 0
+    return B    
 
 
 def prob5():
@@ -43,6 +48,14 @@ def prob5():
     where I is the 3x3 identity matrix and each 0 is a matrix of all zeros
     of the appropriate size.
     """
+    A = np.array([[0,2,4],[1,3,5]])
+    B = 3*np.tril(np.ones((3,3)))
+    C = np.diag([-2,-2,-2])
+    X1 = np.vstack((np.zeros((3,3)),A,B))
+    X2 = np.vstack((A.T,np.zeros((2,2)),np.zeros((3,2))))
+    X3 = np.vstack((np.eye(3),np.zeros((2,3)),C))
+    return np.hstack((X1,X2,X3))
+
     raise NotImplementedError("Problem 5 Incomplete")
 
 
@@ -57,11 +70,3 @@ def prob6(A):
                [ 0.33333333,  0.33333333,  0.33333333]])
     """
     raise NotImplementedError("Problem 6 Incomplete")
-
-
-def prob7():
-    """Given the array stored in grid.npy, return the greatest product of four
-    adjacent numbers in the same direction (up, down, left, right, or
-    diagonally) in the grid.
-    """
-    raise NotImplementedError("Problem 7 Incomplete")

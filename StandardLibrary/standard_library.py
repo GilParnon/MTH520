@@ -70,9 +70,9 @@ def power_set(A):
     Returns:
         (list(sets)): The power set of A as a list of sets.
     """
-    myList = list()
+    myList = []
     for i in range(0,len(A)+1,1):
-        myList += combinations(A,i)
+        myList.append(set(combinations(A,i)))
     return myList
 
 if __name__ == "__main__":
