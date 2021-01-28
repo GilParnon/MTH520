@@ -56,8 +56,6 @@ def prob5():
     X3 = np.vstack((np.eye(3),np.zeros((2,3)),C))
     return np.hstack((X1,X2,X3))
 
-    raise NotImplementedError("Problem 5 Incomplete")
-
 
 def prob6(A):
     """Divide each row of 'A' by the row sum and return the resulting array.
@@ -69,4 +67,4 @@ def prob6(A):
                [ 0.        ,  1.        ,  0.        ],
                [ 0.33333333,  0.33333333,  0.33333333]])
     """
-    raise NotImplementedError("Problem 6 Incomplete")
+    return A/np.transpose([A.sum(axis=1)])
