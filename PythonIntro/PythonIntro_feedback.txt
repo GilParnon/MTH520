@@ -32,3 +32,9 @@ Comments:
 
 -------------------------------------------------------------------------------
 
+01/28/21 14:37
+
+TypeError while loading 'python_intro.py': palindrome() takes 0 positional arguments but 1 was given
+
+-------------------------------------------------------------------------------
+
