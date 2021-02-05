@@ -1,8 +1,8 @@
 # matplotlib_intro.py
 """Python Essentials: Intro to Matplotlib.
-<Name>
-<Class>
-<Date>
+<Gil Parnon>
+<MTH 520>
+<2/3>
 """
 import numpy as np
 from matplotlib import pyplot as plt
@@ -33,6 +33,7 @@ def prob1():
     for i in range(len(n)):
         x[i] = var_of_means(int(n[i]))
     plt.plot(n,x)
+    plt.show()
     return x
 
 # Problem 2
@@ -133,3 +134,9 @@ def prob6():
     plt.ylim(-2*np.pi,2*np.pi)
     plt.colorbar()
     return
+
+prob1()
+prob2()
+prob3()
+prob4()
+prob6()
