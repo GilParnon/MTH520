@@ -1,0 +1,6 @@
+02/05/21 22:59
+
+TypeError while loading 'matplotlib_intro.py': flip() missing 1 required positional argument: 'axis'
+
+-------------------------------------------------------------------------------
+
