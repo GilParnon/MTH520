@@ -8,9 +8,11 @@
 # (Optional) Import functions from your QR Decomposition lab.
 # import sys
 # sys.path.insert(1, "../QR_Decomposition")
-# from qr_decomposition import qr_gram_schmidt, qr_householder, hessenberg
+from qr_decomposition import qr_gram_schmidt, qr_householder, hessenberg
 
 import numpy as np
+from scipy.linalg import solve_triangular
+from scipy import linalg as la
 from matplotlib import pyplot as plt
 
 
@@ -26,7 +28,11 @@ def least_squares(A, b):
     Returns:
         x ((n, ) ndarray): The solution to the normal equations.
     """
-    raise NotImplementedError("Problem 1 Incomplete")
+    Q,R = np.linalg.qr(A)
+    b2 = np.dot(np.transpose(Q),b)
+    x = solve_triangular(R,b2)
+    
+    return x
 
 # Problem 2
 def line_fit():
@@ -34,8 +40,16 @@ def line_fit():
     index for the data in housing.npy. Plot both the data points and the least
     squares line.
     """
-    raise NotImplementedError("Problem 2 Incomplete")
-
+    data = load('housing.npy')
+    b = data[:,1]
+    A = data.copy()
+    A[:,1] = [1]*len(b)
+    x = least_squares(A,b)
+    plt.scatter(data[:,0],data[:,1])
+    plt.plot(data[:,0],x[0]*data[:,0]+[x[1]]*len(data[:,0]))
+    plt.show()
+    return x
+    
 
 # Problem 3
 def polynomial_fit():
@@ -43,7 +57,45 @@ def polynomial_fit():
     the year to the housing price index for the data in housing.npy. Plot both
     the data points and the least squares polynomials in individual subplots.
     """
-    raise NotImplementedError("Problem 3 Incomplete")
+    data = load('housing.npy')
+    A1 = np.vander(data[:,0],4)
+    A2 = np.vander(data[:,0],7)
+    A3 = np.vander(data[:,0],10)
+    
+    x1 = la.lstsq(A1, data[:,1])[0]
+    y1 = data[:,0]**3*x1[0]+data[:,0]**2*x1[1]+data[:,0]*x1[2]+x1[3]
+    
+    x2 = la.lstsq(A2, data[:,1])[0]
+    y2 = data[:,0]**6*x2[0]+data[:,0]**5*x2[1]+data[:,0]**4*x2[2]+data[:,0]**3*x2[3]+data[:,0]**2*x2[4]+data[:,0]*x2[5]+x2[6]
+    
+    x3 = la.lstsq(A3, data[:,1])[0]
+    y3 = data[:,0]**9*x3[0]+data[:,0]**8*x3[1]+data[:,0]**7*x3[2]+data[:,0]**6*x3[3]+data[:,0]**5*x3[4]
+    y3 = y3+data[:,0]**4*x3[5]+data[:,0]**3*x3[6]+data[:,0]**2*x3[7]+data[:,0]*x3[8]+x3[9]
+ 
+    xp1 = np.polyfit(data[:,0],data[:,1],3)
+    xp2 = np.polyfit(data[:,0],data[:,1],6)
+    xp3 = np.polyfit(data[:,0],data[:,1],9)
+    print("|Vandermonde x^3 - np.polyfit(3rd degree)| = "+str(la.norm(xp1-x1)))
+    print("|Vandermonde x^6 - np.polyfit(6th degree)| = "+str(la.norm(xp2-x2)))
+    print("|Vandermonde x^6 - np.polyfit(9th degree)| = "+str(la.norm(xp3-x3)))
+
+    """  
+    plt.scatter(data[:,0],y1)
+    plt.scatter(data[:,0],y2)
+    plt.scatter(data[:,0],y3)
+    plt.scatter(data[:,0],data[:,1])
+    plt.show()
+    """
+    fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
+    fig.suptitle('x^3, x^6, x^9')
+    ax1.scatter(data[:,0], y1)
+    ax1.scatter(data[:,0],data[:,1])
+    ax2.scatter(data[:,0], y2)
+    ax2.scatter(data[:,0],data[:,1])
+    ax3.scatter(data[:,0], y3)
+    ax3.scatter(data[:,0],data[:,1])    
+    
+    
 
 
 def plot_ellipse(a, b, c, d, e):
