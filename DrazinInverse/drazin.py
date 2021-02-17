@@ -1,8 +1,8 @@
 # drazin.py
 """Volume 1: The Drazin Inverse.
-<Name>
-<Class>
-<Date>
+<Gil Parnon>
+<MTH 520>
+<2/15/2021>
 """
 
 import numpy as np
@@ -50,8 +50,18 @@ def is_drazin(A, Ad, k):
     Returns:
         (bool) True of Ad is the Drazin inverse of A, False otherwise.
     """
-    raise NotImplementedError("Problem 1 Incomplete")
+    cond1 = np.array_equal(np.dot(A,Ad),np.dot(Ad,A))
+    cond2 = np.array_equal(np.dot(np.linalg.matrix_power(A,k+1),Ad),np.linalg.matrix_power(A,k))
+    cond3 = np.array_equal(np.dot(np.dot(Ad,A),Ad),Ad) 
+    return cond1 & cond2 & cond3
+    
 
+A = np.array([[1,3,0,0],[0,1,3,0],[0,0,1,3],[0,0,0,0]])
+Ad = np.array([[1,-3,9,81],[0,1,-3,-18],[0,0,1,3],[0,0,0,0]])
+B = np.array([[1,1,3],[5,2,6],[-2,-1,-3]])
+Bd = np.array([[0,0,0],[0,0,0],[0,0,0]])
+print(is_drazin(A,Ad,1))
+print(is_drazin(B,Bd,3))
 
 # Problem 2
 def drazin_inverse(A, tol=1e-4):
@@ -110,7 +120,7 @@ class LinkPredictor:
         Raises:
             ValueError: If node is not in the graph.
         """
-        raise NotImplementedError("Problem 5 Incomplete"
+        raise NotImplementedError("Problem 5 Incomplete")
 
 
     def add_link(self, node1, node2):
