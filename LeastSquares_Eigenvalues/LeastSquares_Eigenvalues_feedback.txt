@@ -1,0 +1,25 @@
+02/17/21 22:57
+
+ModuleNotFoundError while loading 'lstsq_eigs.py': No module named 'qr_decomposition'
+
+-------------------------------------------------------------------------------
+
+02/17/21 23:05
+
+Problem 1 (10 points):
+Score += 10
+
+Problem 2 (15 points):
+Score += 15
+
+Problem 3 (20 points):
+need 4 plots, use lines not scatter for fits
+Score += 12
+
+Code Quality (5 points):
+Score += 5
+
+Total score: 42/50 = 84.0%
+
+-------------------------------------------------------------------------------
+
