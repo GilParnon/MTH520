@@ -72,11 +72,13 @@ def power_set(A):
     """
     myList = []
     for i in range(0,len(A)+1,1):
-        myList.append(set(combinations(A,i)))
+        for combo in combinations(A,i):
+            # myList.append(set(combinations(A,i)))
+            myList.append(set(combo))
     return myList
 
-if __name__ == "__main__":
-    print(prob1((3,5,12,0,2)))
-    prob2()
-    print(hypot(3,4))
-    print(power_set(("A","B","C","D")))
+#if __name__ == "__main__":
+    # print(prob1((3,5,12,0,2)))
+    # prob2()
+    # print(hypot(3,4))
+    # print(power_set(("A","B","C","D")))
