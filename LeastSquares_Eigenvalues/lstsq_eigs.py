@@ -8,7 +8,7 @@
 # (Optional) Import functions from your QR Decomposition lab.
 # import sys
 # sys.path.insert(1, "../QR_Decomposition")
-from qr_decomposition import qr_gram_schmidt, qr_householder, hessenberg
+#from qr_decomposition import qr_gram_schmidt, qr_householder, hessenberg
 
 import numpy as np
 from scipy.linalg import solve_triangular
@@ -40,7 +40,7 @@ def line_fit():
     index for the data in housing.npy. Plot both the data points and the least
     squares line.
     """
-    data = load('housing.npy')
+    data = np.load('housing.npy')
     b = data[:,1]
     A = data.copy()
     A[:,1] = [1]*len(b)
@@ -57,7 +57,7 @@ def polynomial_fit():
     the year to the housing price index for the data in housing.npy. Plot both
     the data points and the least squares polynomials in individual subplots.
     """
-    data = load('housing.npy')
+    data = np.load('housing.npy')
     A1 = np.vander(data[:,0],4)
     A2 = np.vander(data[:,0],7)
     A3 = np.vander(data[:,0],10)
