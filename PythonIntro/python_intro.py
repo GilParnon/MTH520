@@ -53,17 +53,17 @@ def palindrome():
             if numTemp == numTemp[::-1] and int(numTemp)>num:
                 num = int(numTemp)
                 numInd = [i,j]
-    return num, numInd
+    return num  #, numInd
 def alt_harmonic(terms):
     """Calculates the harmonic series to the number of terms specified"""
     return sum([((-1)**(n+1))/n for n in range(1,terms+1,1)])
 
-print("A sphere of radius 3 has volume ", sphere_volume(3), ".")
-isolate(1,2,3,4,145)
-print(first_half("Hello"))
-print(backward("Goodbye"))
-print(list_ops())
-print(pig_latin('Math'))
-print(pig_latin('math'))
-print(palindrome(3))
-print(alt_harmonic(500000))
+# print("A sphere of radius 3 has volume ", sphere_volume(3), ".")
+# isolate(1,2,3,4,145)
+# print(first_half("Hello"))
+# print(backward("Goodbye"))
+# print(list_ops())
+# print(pig_latin('Math'))
+# print(pig_latin('math'))
+# print(palindrome())
+# print(alt_harmonic(500000))
