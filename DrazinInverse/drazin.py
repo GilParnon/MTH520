@@ -7,7 +7,7 @@
 
 import numpy as np
 from scipy import linalg as la
-
+from scipy.sparse.csgraph import laplacian as lap
 
 # Helper function for problems 1 and 2.
 def index(A, tol=1e-5):
@@ -73,7 +73,19 @@ def drazin_inverse(A, tol=1e-4):
     Returns:
        ((n,n) ndarray) The Drazin inverse of A.
     """
-    raise NotImplementedError("Problem 2 Incomplete")
+    (n,n) = np.shape(A)
+    T1,Q1,k1 = la.schur(A, sort=lambda x:np.abs(x)>tol)
+    T2,Q2,k2 = la.schur(A, sort=lambda x:np.abs(x)<=tol)
+    U = np.concatenate((Q1[:,:k1],Q2[:,:k2]),axis=1)
+    Uinv = la.inv(U)
+    V = np.dot(Uinv,np.dot(A,U))
+    Z = np.zeros((n,n))
+    if k1 != 0:
+        Z[:k1,:k1] = la.inv(V[:k1,:k1])
+    return np.dot(U,np.dot(Z,Uinv))
+
+Bd = drazin_inverse(B)
+print(is_drazin(B,Bd,3))
 
 
 # Problem 3
@@ -87,7 +99,28 @@ def effective_resistance(A):
         ((n,n) ndarray) The matrix where the ijth entry is the effective
         resistance from node i to node j.
     """
-    raise NotImplementedError("Problem 3 Incomplete")
+    L = lap(A)
+    n = np.shape(A)
+    R = np.zeros(n)
+    for j in range(n[1]):
+        Lj = np.copy(L)
+        Lj[:,j] = np.eye(n[1])[:,j]
+        R[:,j] = np.diag(drazin_inverse(Lj))
+    np.fill_diagonal(R,0)
+    return R
+A1 = np.array([[1,1,0,0],[1,1,1,0],[0,1,1,1],[0,0,1,1]])
+A2 = np.array([[1,1],[1,1]])
+A3 = np.array([[1,1,1],[1,1,1],[1,1,1]])
+A4 = np.array([[3,3],[3,3]])
+A5 = np.array([[2,2],[2,2]])
+A6 = np.array([[4,4],[4,4]])
+
+print(effective_resistance(A1))
+print(effective_resistance(A2))
+print(effective_resistance(A3))
+print(effective_resistance(A4))
+print(effective_resistance(A5))
+print(effective_resistance(A6))
 
 
 # Problems 4 and 5
