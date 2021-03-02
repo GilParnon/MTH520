@@ -1,0 +1,46 @@
+03/02/21 11:05
+
+Problem 1 (15 points):
+is_drazin() failed for A =
+[[ 10.  -8.   6.  -3.]
+ [ 12. -10.   8.  -4.]
+ [  1.  -1.   1.   0.]
+ [ -2.   2.  -2.   2.]],
+A^D =
+[[ 2.  -1.5  1.  -0.5]
+ [ 2.  -1.5  1.  -0.5]
+ [-1.   1.  -1.   1. ]
+ [-2.   2.  -2.   2. ]],
+ k =2
+	Correct response:
+True
+	Student response:
+False
+is_drazin() failed for A =
+[[-1.    -1.    -1.   ]
+ [-1.     0.333 -1.   ]
+ [-1.    -1.    -1.   ]],
+A^D =
+[[-0.062 -0.375 -0.063]
+ [-0.375  0.75  -0.375]
+ [-0.062 -0.375 -0.062]],
+ k =1
+	Correct response:
+True
+	Student response:
+False
+Score += 9
+
+Problem 2 (15 points):
+Score += 15
+
+Problem 3 (15 points):
+Score += 15
+
+Code Quality (5 points):
+Score += 5
+
+Total score: 44/50 = 88.0%
+
+-------------------------------------------------------------------------------
+
